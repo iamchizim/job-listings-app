@@ -18,7 +18,7 @@ const JobCategoryPage = () => {
       const response = await fetch(url);
       if (!response.ok) throw new Error("Failed to fetch categories");
       const data = await response.json();
-      setCategories(data.categories || []); // Ensure categories is an array
+      setCategories(data.categories || []); 
     } catch (error) {
       console.error("Error fetching categories:", error);
       setError("Failed to load job categories. Please try again later.");
