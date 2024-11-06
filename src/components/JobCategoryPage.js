@@ -9,8 +9,8 @@ const JobCategoryPage = () => {
   const [error, setError] = useState(null);
 
   const BASE_URL = "https://api.adzuna.com/v1/api";
-  const API_KEY = "8c3fa43c6e834b72327f6b0d5d5b7b7f"; 
-  const APP_ID = "288e942a"; 
+  const API_KEY = "8c3fa43c6e834b72327f6b0d5d5b7b7f";
+  const APP_ID = "288e942a";
 
   const fetchCategories = async (country) => {
     try {
@@ -18,7 +18,7 @@ const JobCategoryPage = () => {
       const response = await fetch(url);
       if (!response.ok) throw new Error("Failed to fetch categories");
       const data = await response.json();
-      setCategories(data.categories || []); 
+      setCategories(data.categories || []);
     } catch (error) {
       console.error("Error fetching categories:", error);
       setError("Failed to load job categories. Please try again later.");
@@ -48,7 +48,10 @@ const JobCategoryPage = () => {
             <div key={index} className="category-card">
               <h3>{category.label}</h3>
               <p>{category.tag}</p>
-              <Link to="/JobListingsPage" state={{ country, jobType, category }}>
+              <Link
+                to="/JobListingsPage"
+                state={{ country, jobType, category }}
+              >
                 Select
               </Link>
             </div>
@@ -80,4 +83,3 @@ const JobCategoryPage = () => {
 };
 
 export default JobCategoryPage;
-
