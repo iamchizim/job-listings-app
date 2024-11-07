@@ -7,12 +7,14 @@ import HomePage from "./components/HomePage";
 import JobCategoryPage from "./components/JobCategoryPage";
 import JobDetailsPage from "./components/JobDetailsPage";
 import JobListingsPage from "./components/JobListingsPage";
-
+import NotFoundPage from "./components/NotFoundPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomePage />,
+    errorElement: <NotFoundPage />
+    
   },
   {
     path: "/JobCategoryPage",

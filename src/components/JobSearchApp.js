@@ -1,5 +1,5 @@
 import HomePage from "./HomePage";
-import JobCategoryPage from "./JobCategoryPage"
+import JobCategoryPage from "./JobCategoryPage";
 import JobDetailsPage from "./JobDetailsPage";
 import JobListingsPage from "./JobListingsPage";
 

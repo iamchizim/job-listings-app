@@ -56,7 +56,7 @@ const categoryString = typeof category === 'object' && category?.tag ? category.
   };
 
   return (
-    <section>
+    <section className="container">
       {loading ? (
         <p>Loading...</p>
       ) : error ? (
@@ -68,7 +68,7 @@ const categoryString = typeof category === 'object' && category?.tag ? category.
               <div key={job.id} className="job-card">
                 <h3>{job.title}</h3>
                 {console.log(job)}
-                <Link to={`/JobDetails/${job.id}`} state={{ job }}>
+                <Link to={`/JobDetailsPage/${job.id}`} state={{ job }}>
                   Read More
                 </Link>
               </div>

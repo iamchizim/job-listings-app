@@ -38,7 +38,7 @@ const JobCategoryPage = () => {
   }, [country]);
 
   return (
-    <section>
+    <section className="container">
       <h2>
         Job Categories for{" "}
         {country === "za"
@@ -50,7 +50,7 @@ const JobCategoryPage = () => {
       </h2>
 
       {loading ? (
-        <p>Loading...</p>
+        <p className="loading">Loading...</p>
       ) : error ? (
         <p className="error">{error}</p>
       ) : categories.length === 0 ? (

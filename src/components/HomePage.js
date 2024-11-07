@@ -9,7 +9,7 @@ const HomePage = () => {
   };
 
   return (
-    <section>
+    <section className="container">
       <h1>Job Listings App</h1>
       <p>Select your country to get started:</p>
 
@@ -30,17 +30,7 @@ const HomePage = () => {
       <Link
         to="/JobCategoryPage"
         state={{ country }}
-        style={{
-          display: "inline-block",
-          marginTop: "10px",
-          padding: "10px 20px",
-          textDecoration: "none",
-          backgroundColor: "#007BFF",
-          color: "#fff",
-          borderRadius: "5px",
-          cursor: country ? "pointer" : "not-allowed",
-          opacity: country ? 1 : 0.5,
-        }}
+       
       >
         Next
       </Link>
