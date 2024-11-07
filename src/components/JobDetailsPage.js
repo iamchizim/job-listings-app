@@ -12,6 +12,7 @@ const JobDetailsPage = () => {
     <section>
       <h3>{job.title}</h3>
       <p>{job.description}</p>
+      <p>{job.created}</p>
     </section>
   );
 };

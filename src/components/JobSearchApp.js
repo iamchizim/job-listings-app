@@ -1,15 +1,16 @@
-import React from "react";
 import HomePage from "./HomePage";
-import JobCategoryPage from "./JobCategorypage";
+import JobCategoryPage from "./JobCategoryPage"
 import JobDetailsPage from "./JobDetailsPage";
-import JobListingsPage from "./JobListingsPage"; 
-import Pagination from "./Pagination";
-import { useState } from "react";
+import JobListingsPage from "./JobListingsPage";
 
-const JobSearchApp = () =>{
-const [currentPage, setCurrentPage] = useState(1)
-const [jobsPerPage] = useState(10)
-
-
-}
-export default JobSearchApp
+const JobSearchApp = () => {
+  return (
+    <section>
+      <HomePage />
+      <JobCategoryPage />
+      <JobListingsPage />
+      <JobDetailsPage />
+    </section>
+  );
+};
+export default JobSearchApp;

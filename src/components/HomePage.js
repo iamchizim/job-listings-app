@@ -28,7 +28,7 @@ const HomePage = () => {
       <br />
 
       <Link
-        to="/JobTypePage"
+        to="/JobCategoryPage"
         state={{ country }}
         style={{
           display: "inline-block",

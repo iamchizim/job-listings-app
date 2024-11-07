@@ -4,10 +4,10 @@ import "./index.css";
 import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "./components/HomePage";
-import JobCategoryPage from "./components/JobCategorypage";
+import JobCategoryPage from "./components/JobCategoryPage";
 import JobDetailsPage from "./components/JobDetailsPage";
 import JobListingsPage from "./components/JobListingsPage";
-import JobTypePage from "./components/JobTypePage";
+
 
 const router = createBrowserRouter([
   {
@@ -26,15 +26,11 @@ const router = createBrowserRouter([
     path: "/JobListingsPage",
     element: <JobListingsPage />,
   },
-  {
-    path: "/JobTypePage",
-    element: <JobTypePage />,
-  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+     <RouterProvider router={router} />
   </React.StrictMode>
 );

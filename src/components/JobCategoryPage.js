@@ -3,7 +3,7 @@ import { useLocation, Link } from "react-router-dom";
 
 const JobCategoryPage = () => {
   const location = useLocation();
-  const { country, jobType } = location.state || {};
+  const { country } = location.state || {};
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -14,11 +14,14 @@ const JobCategoryPage = () => {
 
   const fetchCategories = async (country) => {
     try {
-      const url = `${BASE_URL}/jobs/${country}/categories?app_id=${APP_ID}&app_key=${API_KEY}`;
+      setLoading(true)
+      let url = `${BASE_URL}/jobs/${country}/categories?app_id=${APP_ID}&app_key=${API_KEY}`;
+      
+     
       const response = await fetch(url);
       if (!response.ok) throw new Error("Failed to fetch categories");
       const data = await response.json();
-      setCategories(data.categories || []);
+      setCategories(data.results || []);  // Use 'results' based on your response structure
     } catch (error) {
       console.error("Error fetching categories:", error);
       setError("Failed to load job categories. Please try again later.");
@@ -29,13 +32,23 @@ const JobCategoryPage = () => {
 
   useEffect(() => {
     if (country) {
+
       fetchCategories(country);
     }
   }, [country]);
 
   return (
     <section>
-      <h2>Job Categories for {country}</h2>
+      <h2>
+        Job Categories for{" "}
+        {country === "za"
+          ? "South Africa"
+          : country === "gb"
+          ? "Great Britain"
+          : country}
+        :
+      </h2>
+
       {loading ? (
         <p>Loading...</p>
       ) : error ? (
@@ -47,10 +60,9 @@ const JobCategoryPage = () => {
           {categories.map((category, index) => (
             <div key={index} className="category-card">
               <h3>{category.label}</h3>
-              <p>{category.tag}</p>
               <Link
                 to="/JobListingsPage"
-                state={{ country, jobType, category }}
+                state={{ country, category }}
               >
                 Select
               </Link>
@@ -58,28 +70,9 @@ const JobCategoryPage = () => {
           ))}
         </div>
       )}
-
-      <style jsx>{`
-        .categories-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-          gap: 20px;
-          margin-top: 20px;
-        }
-        .category-card {
-          border: 1px solid #ddd;
-          border-radius: 8px;
-          padding: 16px;
-          text-align: center;
-          background-color: #f9f9f9;
-          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        .error {
-          color: red;
-        }
-      `}</style>
     </section>
   );
 };
 
 export default JobCategoryPage;
+
